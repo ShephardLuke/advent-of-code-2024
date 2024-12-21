@@ -12,14 +12,15 @@ Each directory contains all the code for the named day.
 
 Instructions for running part 1 and part 2 for each day:
 
-| Day | Part 1                                                                                                                                         | Part 2                                                                                                 |
-| --- | ---------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
-|  1  | Run totalDistanceCalculator.py.                                                                                                                | Run similarityScoreCalculator.py.                                                                      |
-|  2  | Run reportChecker.py with the ```PROBLEM_DAMPENER_ENABLED``` flag set to ```False```.                                                              | Run reportChecker.py with the ```PROBLEM_DAMPENER_ENABLED``` flag set to ```True```.                       |
-|  3  | Comment out or remove the ```do``` and ```don't``` instructions from ```getInstructions()``` in ```memory.py``` and run multiplactionAdder.py. | Run multiplicationAdder.py (revert part 1 instrutions if done).                                        |
-|  4  | Run wordSearchSolver.py with ```SELECTED_PUZZLE_TYPE``` set to ```PUZZLE_TYPES[0]``` (XMAS).                                                   | Run wordSearchSolver.py with ```SELECTED_PUZZLE_TYPE``` set to ```PUZZLE_TYPES[1]``` (X-MAS).          |
-|  5  | Run updateValidator.py with ```SELECTED_MODE``` set to ```MODE[0]``` (GET VALID UPDATES).                                                      | Run updateValidator.py with ```SELECTED_MODE``` set to ```MODE[1]``` (CORRECT INVALID UPDATES).        |
-|  6  | Run guardPredictor.py with ```SELECTED_MODE``` set to ```MODE[0]``` (COUNT).                                                                   | Run guardPredictor.py with ```SELECTED_MODE``` set to ```MODE[1]``` (LOOPS). Warning: takes a while.   |
+| Day | Part 1                                                                                                                                                      | Part 2                                                                                       |
+| --- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+|  1  | Run totalDistanceCalculator.py.                                                                                                                             | Run similarityScoreCalculator.py.                                                            |
+|  2  | Run reportChecker.py with the `PROBLEM_DAMPENER_ENABLED` flag set to `False`.                                                                               | Run reportChecker.py with the `PROBLEM_DAMPENER_ENABLED` flag set to `True`.                 |
+|  3  | Comment out or remove the `do` and `don't` instructions from `getInstructions()` in `memory.py` and run multiplactionAdder.py.                              | Run multiplicationAdder.py (revert part 1 instrutions if done).                              |
+|  4  | Run wordSearchSolver.py with `SELECTED_PUZZLE_TYPE` set to `PUZZLE_TYPES[0]` (XMAS).                                                                        | Run wordSearchSolver.py with `SELECTED_PUZZLE_TYPE` set to `PUZZLE_TYPES[1]` (X-MAS).        |
+|  5  | Run updateValidator.py with `SELECTED_MODE` set to `MODE[0]` (GET VALID UPDATES).                                                                           | Run updateValidator.py with `SELECTED_MODE` set to `MODE[1]` (CORRECT INVALID UPDATES).      |
+|  6  | Run guardPredictor.py with `SELECTED_MODE` set to `MODE[0]` (COUNT).                                                                                        | Run guardPredictor.py with `SELECTED_MODE` set to `MODE[1]` (LOOPS). Warning: takes a while. |
+|  6  | Run calibrationResultCalculator.py with the <code>&#124;&#124;</code> (concatination) operator commented out or removed from the `getOperators()` function. | Run calibrationResultCalculator.py (revert part 1 instructions if done).                     |
 
 # Rules I made for myself
 1. All programs have to be written in python using the procedural programming paradigm.

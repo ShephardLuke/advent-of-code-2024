@@ -62,7 +62,8 @@ def createEquation(inputs, result):
 def getOperators():
     return [
         "+",
-        "*"
+        "*",
+        "||"
     ]
 
 
@@ -73,6 +74,8 @@ def runOperation(num1, operator, num2):
             return num1 + num2
         case "*":
             return num1 * num2
+        case "||":
+            return int(str(num2) + str(num1))
     return -1
 
 
