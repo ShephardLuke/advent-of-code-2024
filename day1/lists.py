@@ -8,5 +8,7 @@ def getFromFile(fileName):
         (input1, input2) = (line.rstrip().split("   "))
         list1.append(int(input1))
         list2.append(int(input2))
+    
+    file.close()
 
     return (list1, list2)

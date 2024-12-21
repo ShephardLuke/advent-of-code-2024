@@ -1,7 +1,9 @@
 # Returns a program from a file
 def getFromFile(fileName):
     file = open(fileName, "r")
-    return file.read()
+    read =  file.read()
+    file.close()
+    return read
 
 # Returns a list of all possible instructions and their number of arguments
 def getInstructions():

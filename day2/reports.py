@@ -7,4 +7,6 @@ def getFromFile(fileName):
     for line in file:
         reports.append(line.rstrip().split(" "))
     
+    file.close()
+
     return reports

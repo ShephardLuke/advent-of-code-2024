@@ -202,7 +202,7 @@ def readFromFile(fileName):
     file = open(fileName)
     for line in file:
         lab.append(list(line.rstrip()))
-    
+    file.close()
     return lab
 
 

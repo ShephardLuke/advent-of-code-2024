@@ -117,16 +117,20 @@ def createRulesFromArray(rulesList):
 # Opens the file with the given name and returns an array of rules and updates
 def readFromFile(fileName):
     file = open(fileName, "r")
-    file = file.read().split("\n")
+    noLinesFile = file.read().split("\n")
 
-    split = file.index("")
+    split = noLinesFile.index("")
 
-    rules = file[:split:]
+    rules = noLinesFile[:split:]
 
-    updates = file[file.index("") + 1:-1:]
+    updates = noLinesFile[noLinesFile.index("") + 1:-1:]
+
+    file.close()
+
     for i in range(len(updates)):
         updates[i] = updates[i].split(",")
-    
+
+
     return (rules, updates)
 
 

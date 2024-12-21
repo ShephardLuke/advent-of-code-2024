@@ -45,7 +45,7 @@ def getEquationsFromFile(fileName):
         inputs = list(map(int, inputs))
 
         equations.append(createEquation(inputs, result))
-
+    file.close()
     return equations
 
 

@@ -2,7 +2,7 @@ import lists
 
 # Main method
 def similarityScoreCalculator():
-    (list1, list2) = lists.getFromFile("inputs.txt")
+    (list1, list2) = lists.getFromFile("input.txt")
 
     frequencies = calculateFrequencies(list2)
 

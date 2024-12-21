@@ -91,6 +91,7 @@ def readFromFile(fileName):
     file = open(fileName, "r")
     for line in file:
         lines.append(line.rstrip())
+    file.close()
     return lines
 
 
