@@ -23,7 +23,8 @@ Instructions for running part 1 and part 2 for each day:
 
 # Rules I made for myself
 1. All programs have to be written in python using the procedural programming paradigm.
-2. To start a day, each day before it must be fully solved (to fit the story).
-3. The solution to a part must be printed to the console and the only thing printed to the console.
-4. Part 2 should not overwrite part 1, it should either extend on part 1 code or be written in a separate file.
-5. All programs should allow for running both parts and there should be an easy way to switch parts if they are in the same file.
+2. Programs should be well-commented and designed for maintainability and expansion (while also not taking to long to make).
+3. To start a day, each day before it must be fully solved (to fit the story).
+4. The solution to a part must be printed to the console and the only thing printed to the console.
+5. Part 2 should not overwrite part 1, it should either extend on part 1 code or be written in a separate file.
+6. All programs should allow for running both parts and there should be an easy way to switch parts if they are in the same file.
