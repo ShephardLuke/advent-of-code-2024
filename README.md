@@ -1,13 +1,13 @@
 # advent-of-code-2024
-### My advent of code solutions.
+
+### My [advent of code 2024](https://adventofcode.com/2024) solutions.
 Written in python using procedural programming.
 
 # Running
 
-All programs by default run using my input for the solution. To change the input change the file name at the beginning of the program or edit the input.txt/inputs.txt text file in the directory.
+All programs by default run using an input.txt file in the same directory. Advent of Code do not want inputs being distributed so to use it you will have to get your own from [their website](https://adventofcode.com/2024) and save it.
 
 Solutions will be printed to the console.
-
 Each directory contains all the code for the named day.
 
 Instructions for running part 1 and part 2 for each day:

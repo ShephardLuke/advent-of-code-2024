@@ -2,7 +2,7 @@ import lists
 
 # Main method
 def totalDistanceCalculator():
-    (list1, list2) = lists.getFromFile("inputs.txt")
+    (list1, list2) = lists.getFromFile("input.txt")
 
     list1.sort()
     list2.sort()
