@@ -1,6 +1,6 @@
 # advent-of-code-2024
 
-### My [advent of code 2024](https://adventofcode.com/2024) solutions.
+### My [Advent of Code 2024](https://adventofcode.com/2024) solutions.
 Written in python using procedural programming.
 
 # Running
