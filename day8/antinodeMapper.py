@@ -1,10 +1,12 @@
 # Main method
 def antinodeMapper():
+    RESONANT_ENABLED = True
+
     FILE_NAME = "input.txt"
 
     antennas, mapSize = getAntennasFromFile(FILE_NAME)
 
-    antinodes = getAntinodes(antennas)
+    antinodes = getAntinodes(antennas, mapSize, RESONANT_ENABLED)
 
     antinodesInMap = getArrayInMap(antinodes, mapSize)
 
@@ -46,14 +48,14 @@ def getArrayInMap(array, mapSize):
     newArray = []
 
     for (x, y) in array:
-        if x >= 0 and y >= 0 and x < mapSize[0] and y < mapSize[1]:
+        if inMap(x, y, mapSize):
             newArray.append((x, y))
     
     return newArray
 
 
 # Calculates antinode positions for each frequency
-def getAntinodes(antennas):
+def getAntinodes(antennas, mapSize, resonant):
     antinodes = []
 
     frequencies = list(antennas.keys())
@@ -63,18 +65,38 @@ def getAntinodes(antennas):
         for (x1, y1) in antennaLocations:
             for (x2, y2) in antennaLocations:
                 if (x1 == x2 and y1 == y2):
+                    if (resonant and antinodes.count((x1, y1)) == 0):
+                        antinodes.append((x1, y1))
                     continue
+
                 difference = (x1 - x2, y1 - y2)
-                place1 = (x1 - difference[0], y1 - difference[1])
-                place2 = (x1 + difference[0], y1 + difference[1])
+                antinodePosition = (x1 + difference[0], y1 + difference[1])
 
-                if antennaLocations.count(place1) == 0 and antinodes.count(place1) == 0:
-                    antinodes.append(place1)
-
-                if antennaLocations.count(place2) == 0 and antinodes.count(place2) == 0:
-                    antinodes.append(place2)
+                if (resonant):
+                    addAntinodesResonant(antinodes, antinodePosition, difference, mapSize)
+                else:
+                    addAntinodes(antennaLocations, antinodes, antinodePosition)
     
     return antinodes
+
+
+# Adds antinode to array only when its not already added and its not overwriting one
+def addAntinodes(antennaLocations, antinodes, antinodePosition):
+    if antennaLocations.count(antinodePosition) == 0 and antinodes.count(antinodePosition) == 0:
+        antinodes.append(antinodePosition)
+
+
+# Continuously adds antinodes in a line at the same distance as the distance between the two antennas
+def addAntinodesResonant(antinodes, antinodePosition, difference, mapSize):
+    while inMap(antinodePosition[0], antinodePosition[1], mapSize):
+        if antinodes.count(antinodePosition) == 0:
+            antinodes.append(antinodePosition)
+        antinodePosition = (antinodePosition[0] + difference[0], antinodePosition[1] + difference[1])
+
+
+# True only when x and y are in the maps boundry
+def inMap(x, y, mapSize):
+    return x >= 0 and y >= 0 and x < mapSize[0] and y < mapSize[1]
 
 
 # Turns a map from the given file into a hashmap of frequencies -> positions
