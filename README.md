@@ -22,6 +22,7 @@ Instructions for running part 1 and part 2 for each day:
 |  6  | Run guardPredictor.py with `SELECTED_MODE` set to `MODE[0]` (COUNT).                                                                                        | Run guardPredictor.py with `SELECTED_MODE` set to `MODE[1]` (LOOPS). Warning: takes a while.    |
 |  7  | Run calibrationResultCalculator.py with the <code>&#124;&#124;</code> (concatination) operator commented out or removed from the `getOperators()` function. | Run calibrationResultCalculator.py (revert part 1 instructions if done).                        |
 |  8  | Run antinodeMapper.py with the `RESONANT_ENABLED` flag in the main method set to `False`.                                                                   | Run antinodeMapper.py with the `RESONANT_ENABLED` flag in the main method set to `True`.        |
+|  9  | Run diskSpaceMaker.py with the `FRAGMENTATION_ENABLED` flag in the main method set to `True`.                                                               | Run diskSpaceMaker.py with the `FRAGMENTATION_ENABLED` flag in the main method set to `False`.  |
 
 # Rules I made for myself
 1. All programs have to be written in python using the procedural programming paradigm.

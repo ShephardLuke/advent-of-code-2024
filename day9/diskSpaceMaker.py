@@ -1,11 +1,13 @@
 # Main method
 def diskSpaceMaker():
+    FRAGMENTATION_ENABLED = False
+
     FILE_NAME = "input.txt"
 
     disk = getDiskFromFile(FILE_NAME)
-    newDisk = fillDiskGaps(disk)
-    
-    print(getChecksum(newDisk))
+    fillDiskGaps(disk, FRAGMENTATION_ENABLED)
+
+    print(getChecksum(disk))
 
 
 # Returns the checksum of a disk which is the sum of multiplying each id by its position
@@ -21,30 +23,72 @@ def getChecksum(disk):
     return checksum
 
 
-# Fills in the gaps at the front of the disk by moving blocks from the back so all the free space is at the end
-def fillDiskGaps(disk):
+# Fills in the gaps at the front of the disk by checking if files at the back can fit in the front gaps
+def fillDiskGaps(disk, fragmentation):
     leftPointer = 0
     rightPointer = -1
-    newDisk = []
-    freeDisk = []
+
+    freeSpaces = getFreeSpaces(disk)
+
+    blocksToMove = (-1, 0)
 
     while leftPointer + abs(rightPointer) <= len(disk):
         if disk[leftPointer] != ".":
-            newDisk.append(disk[leftPointer])
             leftPointer += 1
             continue
+    
         if disk[rightPointer] == ".":
-            freeDisk.append(".")
-            rightPointer -= 1
-            continue
+            if blocksToMove[1] == 0:
+                rightPointer -= 1
+                continue
+        else:
+            if blocksToMove[1] == 0:
+                blocksToMove = (int(disk[rightPointer]), 1)
+                rightPointer -= 1
+                continue
+            elif not fragmentation and blocksToMove[0] == int(disk[rightPointer]): 
+                blocksToMove = (blocksToMove[0], blocksToMove[1] + 1)
+                rightPointer -= 1
+                continue
         
-        newDisk.append(disk[rightPointer])
-        leftPointer += 1
+        lookForFreeSpace(disk, freeSpaces, len(disk) - abs(rightPointer), blocksToMove[0], blocksToMove[1])
         
-        freeDisk.append(".")
-        rightPointer -= 1
+        blocksToMove = (-1, 0)
 
-    return newDisk + freeDisk
+
+# Tries to find a free space in front of the file, if so then it gets moved
+def lookForFreeSpace(disk, freeSpaces, fileIndex, fileId, totalBlocks):
+    for i in range(len(freeSpaces)):
+        index, spaces = freeSpaces[i]
+        if index < fileIndex and spaces >= totalBlocks:
+            moveFile(disk, fileId, totalBlocks, fileIndex, index)
+            freeSpaces[i] = (index + totalBlocks, spaces - totalBlocks)
+            break
+
+
+# Moves file to new index, deleting it from the old place on the disk
+def moveFile(disk, fileId, totalBlocks, OldStartIndex, newStartIndex):
+    for j in range(totalBlocks):
+        disk[newStartIndex + j] = fileId
+        disk[OldStartIndex + 1 + j] = "."
+
+
+# Returns free spaces on the disk in the format (index, number of spaces)
+def getFreeSpaces(disk):
+    freeSpaces = []
+
+    found = (-1, 0)
+    for i in range(len(disk)):
+        if disk[i] == ".":
+            if found[0] == -1:
+                found = (i, found[1])
+            found = (found[0], found[1] + 1)
+        else:
+            if found != (-1, 0):
+                freeSpaces.append(found)
+                found = (-1, 0)
+    
+    return freeSpaces
 
 
 # Gets a disk from a file as blocks in array format
