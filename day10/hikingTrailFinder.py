@@ -1,28 +1,31 @@
 # Main method
 def hikingTrailFinder():
+    MODE = ["TRAILHEAD", "RATING"]
+    SELECTED_MODE = MODE[1]
+
     FILE_NAME = "input.txt"
     
     trailMap = getMapFromFile(FILE_NAME)
 
     headLocations = getTrailHeadLocations(trailMap)
 
-    foundEnds = getAllTrailEnds(trailMap, headLocations)
+    foundEnds = getAllTrailEnds(trailMap, headLocations, SELECTED_MODE == MODE[1])
 
     print(len(foundEnds))
 
 
 # Get the ends of all the valid trails
-def getAllTrailEnds(trailMap, headLocations):
+def getAllTrailEnds(trailMap, headLocations, allowDuplicates):
     foundEnds = []
 
     for location in headLocations:
-        foundEnds += getTrailEnds(trailMap, location, 0)
+        foundEnds += getTrailEnds(trailMap, location, 0, allowDuplicates)
     
     return foundEnds
 
 
 # If target matches it recursively checks target + 1 in the 4 spaces around it. Returns an array of locations with 9 that are valid trails
-def getTrailEnds(trailMap, location, target):
+def getTrailEnds(trailMap, location, target, allowDuplicates):
     END = 9
     x, y, = location
 
@@ -41,10 +44,10 @@ def getTrailEnds(trailMap, location, target):
     newLocations = getNewLocations(trailMap, x, y)
 
     for newLocation in newLocations:
-        found = getTrailEnds(trailMap, newLocation, target + 1)
+        found = getTrailEnds(trailMap, newLocation, target + 1, allowDuplicates)
         if len(found) != 0:
             for f in found:
-                if allFound.count(f) == 0:
+                if allowDuplicates or allFound.count(f) == 0:
                     allFound.append(f)
     
     return allFound
