@@ -13,7 +13,7 @@ def stonePredictor():
 
 # Returns new stones after x times blinked
 def predictStonesMultiple(amounts, times):
-    for i in range(times):
+    for _ in range(times):
         amounts = predictStones(amounts)
     return amounts
 
