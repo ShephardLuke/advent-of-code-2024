@@ -3,6 +3,10 @@
 ### My [Advent of Code 2024](https://adventofcode.com/2024) solutions.
 Written in python using procedural programming.
 
+## Progress: 24/50 stars (12/25 days)
+
+### ▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▯▯▯▯▯▯▯▯▯▯▯▯▯▯▯▯▯▯▯▯▯▯▯▯▯▯ 48%
+
 # Running
 
 All programs by default run using an input.txt file in the same directory. Advent of Code do not want inputs being distributed so to use it you will have to get your own from [their website](https://adventofcode.com/2024) and save it.
