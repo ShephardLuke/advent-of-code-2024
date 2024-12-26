@@ -3,9 +3,9 @@
 ### My [Advent of Code 2024](https://adventofcode.com/2024) solutions.
 Written in python using procedural programming.
 
-## Progress: 24/50 stars (12/25 days)
+## Progress: 25/50 stars (12.5/25 days)
 
-### [▮▮▮▮▮▮▮▮▮▮▮▮▯▯▯▯▯▯▯▯▯▯▯▯▯] 48%
+### [▮▮▮▮▮▮▮▮▮▮▮▮▯▯▯▯▯▯▯▯▯▯▯▯▯] 50%
 
 
 # Running
@@ -31,6 +31,7 @@ Instructions for running part 1 and part 2 for each day (if both parts are in th
 |  10 | Run hikingTrailFinder.py with `SELECTED_MODE` in the main method set to `MODE[0]` (TRAILHEAD).                                 | Run hikingTrailFinder.py with `SELECTED_MODE` in the main method set to `MODE[1]` (RATING).                     |
 |  11 | Run stonePredictor.py with `BLINKS` in the main method set to `25`.                                                            | Run stonePredictor.py with `BLINKS` in the main method set to `75`.                                             |
 |  12 | Run fencePriceCalculator.py with the `BULK_DISCOUNT_ENABLED` flag in the main method set to `False`.                           | Run fencePriceCalculator.py with the `BULK_DISCOUNT_ENABLED` flag in the main method set to `True`.             |
+|  13 | Run fewestTokenCalculator.py.                                                                                                  |                                                                                                                 |
 
 # Rules I made for myself
 1. All programs have to be written in python using the procedural programming paradigm.
