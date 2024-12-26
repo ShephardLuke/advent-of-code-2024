@@ -78,7 +78,7 @@ def getFencePrice(garden, bulkDiscountEnabled):
 
 # Adds up all the area and get the edges of the plots recursively and returns it as (area, edges)
 # Edges is an array [[], [], [], []] filled with which plots have an edge in that direction
-# Direction is always top, left, bottom, right (clockwise)
+# Direction is always top, right, bottom, left (clockwise)
 def getPlotDetails(garden, x, y, label):
     if not inBounds(garden, x, y) or garden[y][x] != label:
         return (0,  [[], [], [], []])
