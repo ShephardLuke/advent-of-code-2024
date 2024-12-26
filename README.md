@@ -25,7 +25,7 @@ Instructions for running part 1 and part 2 for each day (if both parts are in th
 |  9  | Run diskSpaceMaker.py with the `FRAGMENTATION_ENABLED` flag in the main method set to `True`.                                  | Run diskSpaceMaker.py with the `FRAGMENTATION_ENABLED` flag in the main method set to `False`.                  |
 |  10 | Run hikingTrailFinder.py with `SELECTED_MODE` in the main method set to `MODE[0]` (TRAILHEAD).                                 | Run hikingTrailFinder.py with `SELECTED_MODE` in the main method set to `MODE[1]` (RATING).                     |
 |  11 | Run stonePredictor.py with `BLINKS` in the main method set to `25`.                                                            | Run stonePredictor.py with `BLINKS` in the main method set to `75`.                                             |
-|  12 | Run stonePredictor.py with the `BULK_DISCOUNT_ENABLED` flag in the main method set to `False`.                                 | Run stonePredictor.py with the `BULK_DISCOUNT_ENABLED` flag in the main method set to `True`.                   |
+|  12 | Run fencePriceCalculator.py with the `BULK_DISCOUNT_ENABLED` flag in the main method set to `False`.                           | Run fencePriceCalculator.py with the `BULK_DISCOUNT_ENABLED` flag in the main method set to `True`.             |
 
 # Rules I made for myself
 1. All programs have to be written in python using the procedural programming paradigm.
