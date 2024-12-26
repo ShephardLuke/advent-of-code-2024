@@ -1,6 +1,6 @@
 # Main method
 def fencePriceCalculator():
-    BULK_DISCOUNT_ENABLED = False
+    BULK_DISCOUNT_ENABLED = True
 
     FILE_NAME = "input.txt"
 
