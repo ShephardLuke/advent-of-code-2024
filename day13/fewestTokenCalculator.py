@@ -1,8 +1,13 @@
+import math
+
 # Main method
 def fewestTokenCalculator():
+    PRIZE_MODIFIER = 10000000000000
+
     FILE_NAME = "input.txt"
 
     machines = getMachinesFromFile(FILE_NAME)
+    applyModifier(machines, PRIZE_MODIFIER)
 
     print(getTotalPrice(machines))
 
@@ -12,26 +17,35 @@ def getTotalPrice(machines):
     total = 0
 
     for machine in machines:
-        total += getLowestPrice(machine)
+        lowest = getLowestPrice(machine)
+        if (lowest != -1):
+            total += lowest
     
     return total
 
 
 # Gets lowest amount of tokens needed to win the prize
 def getLowestPrice(machine):
-    result1 = getLowestMultiple(machine.a.x, machine.b.x, machine.prize.x, machine.a.y, machine.b.y, machine.prize.y, 100)
+    a = getA(machine)
+    b = getB(machine)
+    prize = getPrize(machine)
 
-    if result1 == (-1, -1):
-        return 0
+    resultAB = getLowestMultiple(a, b, prize)
 
-    result2 = getLowestMultiple(machine.b.x, machine.a.x, machine.prize.x, machine.b.y, machine.a.y, machine.prize.y, result1[1] - 1)
+    resultBA = getLowestMultiple(b, a, prize)
 
     prices = getButtonPrices()
 
-    cost1 = result1[0] * prices[0] + result1[1] * prices[1]
-    cost2 = result2[0] * prices[1] + result2[1] * prices[0]
+    cost1 = resultAB[0] * prices[0] + resultAB[1] * prices[1]
+    cost2 = resultBA[0] * prices[1] + resultBA[1] * prices[0]
 
-    if result2 == (-1, -1):
+    if resultAB == (-1, -1) and resultBA == (-1, -1):
+        return -1
+
+    if resultAB == (-1, -1):
+        return cost2
+
+    if resultBA == (-1, -1):
         return cost1
 
     if cost1 <= cost2:
@@ -40,20 +54,34 @@ def getLowestPrice(machine):
     return cost2
 
 
-# Gets the lowest n that when multipled by m it will rusult in the goal
-def getLowestMultiple(num1, num2, goal, otherNum1, otherNum2, otherGoal, max):
-    for i in range(max + 1):
-        result = (goal - (num1 * i)) / num2 
+# Logarithmically gets the lowest n in (n, m) where n and m are positive integers and when multiplied give the prize
+def getLowestMultiple(button, otherButton, prize):
 
-        if result < 0:
-            return (-1, -1)
-        
-        otherResult = (otherGoal - (otherNum1 * i)) / otherNum2
-  
-        if result == otherResult:
-            return (i, int(result))
+    x = getX(button)
+    otherX = getX(otherButton)
+    y = getY(button)
+    otherY = getY(otherButton)
 
-    return (-1, -1)
+    prizeX = getX(prize)
+    prizeY = getY(prize)
+
+    min = 0
+    max = math.ceil(prizeX / x)
+    mid = math.floor(min + ((max - min) / 2))
+    
+    best = (-1, -1)
+    while min <= max:
+        result = (prizeX - (x * mid)) / otherX 
+        otherResult = y * mid + otherY * result
+
+        min, max = getNewMinMax(min, max, mid, otherResult, prizeY)
+
+        if result == math.floor(result) and otherResult == float(prizeY):
+            best = (mid, int(result))
+
+        mid = math.floor(min + ((max - min) / 2))
+
+    return best
 
 
 # Returns an array of machines from the file given
@@ -65,29 +93,96 @@ def getMachinesFromFile(fileName):
 
     for machineInfo in machinesText:
         a, b, prize = machineInfo.split("\n")
-        machine = Machine()
 
-        machine.a = getPositionFromString(a, "+")
-        machine.b = getPositionFromString(b, "+")
-        machine.prize = getPositionFromString(prize, "=")
+        machine = createMachine(
+            getPositionFromString(a, "+"),
+            getPositionFromString(b, "+"),
+            getPositionFromString(prize, "=")
+        )
 
         machines.append(machine)
 
     return machines
 
 
+# Changes max or min so the next result will be closer to the prize
+def getNewMinMax(min, max, mid, result, prize):
+    if result < prize:
+        max = mid - 1
+    else:
+
+        min = mid + 1
+    return min, max
+
+
+# Adds the modifier to the prize of each machine
+def applyModifier(machines, modifier):
+    for machine in machines:
+        prize = getPrize(machine)
+        newPosition = createPosition(getX(prize) + modifier, getY(prize) + modifier)
+        
+        setPrize(machine, newPosition)
+
+
 # Turns a string X and Y into a position, using the breaker character
 def getPositionFromString(string, breaker):
     broken = string.split(",")
-    position = Position()
 
-    broken[0] = broken[0][broken[0].index(breaker) + 1::]
-    broken[1] = broken[1][broken[1].index(breaker) + 1::]
-    
-    position.x = int(broken[0])
-    position.y = int(broken[1])
+    position = createPosition(
+        int(broken[0][broken[0].index(breaker) + 1::]),
+        int(broken[1][broken[1].index(breaker) + 1::])
+    )
 
     return position
+
+
+# Creating a machine
+def createMachine(a, b, prize):
+    machine = Machine()
+    machine.a = a
+    machine.b = b
+    machine.prize = prize
+
+    return machine
+
+
+# Getting A
+def getA(machine):
+    return machine.a
+
+
+# Getting B
+def getB(machine):
+    return machine.b
+
+
+# Setting the prize
+def setPrize(machine, prize):
+    machine.prize = prize
+
+
+# Getting the prize
+def getPrize(machine):
+    return machine.prize
+
+
+# Creating a position
+def createPosition(x, y):
+    position = Position()
+    position.x = x
+    position.y = y
+
+    return position
+
+
+# Getting X
+def getX(position):
+    return position.x
+
+
+# Getting Y
+def getY(position):
+    return position.y
 
 
 # Gets the prices of the buttons, a and b in order
@@ -100,14 +195,14 @@ def getButtonPrices():
 
 # Position record
 class Position:
-    x: 0
-    y: 0
+    x: int
+    y: int
 
 
 # Machine record
 class Machine:
     a: Position
-    b: Position 
+    b: Position
     prize = Position
 
 
