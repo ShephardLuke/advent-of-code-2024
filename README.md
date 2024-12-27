@@ -3,7 +3,7 @@
 ### My [Advent of Code 2024](https://adventofcode.com/2024) solutions.
 Written in python using procedural programming.
 
-## Progress: 26/50 stars (12.5/25 days)
+## Progress: 26/50 stars (13/25 days)
 
 ### [▮▮▮▮▮▮▮▮▮▮▮▮▮▯▯▯▯▯▯▯▯▯▯▯▯] 52%
 
