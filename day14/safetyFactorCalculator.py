@@ -111,7 +111,7 @@ def createPosition(x, y):
     return position
 
 
-# Returns y
+# Returns x
 def getX(position):
     return position.x
 
