@@ -89,6 +89,8 @@ def getMapFromFile(fileName):
 
     for line in file:
         lines.append(list(line.rstrip()))
+
+    file.close()
     
     return lines
 

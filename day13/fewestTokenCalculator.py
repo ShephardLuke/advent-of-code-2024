@@ -89,6 +89,8 @@ def getMachinesFromFile(fileName):
     file = open(fileName, "r")
 
     machinesText = file.read().rstrip().split("\n\n")
+    file.close()
+
     machines = []
 
     for machineInfo in machinesText:

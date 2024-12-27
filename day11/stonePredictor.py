@@ -72,7 +72,9 @@ def getStonesFromFile(fileName):
 
     stones = file.read().rstrip().split(" ")
     stones = list(map(int, stones))
-
+    
+    file.close()
+    
     return stones
 
 

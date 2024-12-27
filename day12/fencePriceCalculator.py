@@ -147,6 +147,8 @@ def readFromFile(fileName):
     for line in file:
         garden.append(list(line.rstrip()))
     
+    file.close()
+    
     return garden
 
 

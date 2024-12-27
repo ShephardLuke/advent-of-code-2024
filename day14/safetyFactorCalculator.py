@@ -56,6 +56,8 @@ def getRobotsFromFile(fileName):
         velocity = getPositionFromString(paramters[1])
         robots.append(createRobot(position, velocity))
     
+    file.close()
+
     return robots
 
 
