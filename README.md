@@ -5,7 +5,7 @@ Written in python using procedural programming.
 
 ## Progress: 28/50 stars (14/25 days)
 
-### [▮▮▮▮▮▮▮▮▮▮▮▮▮▯▯▯▯▯▯▯▯▯▯▯▯] 56%
+### [▮▮▮▮▮▮▮▮▮▮▮▮▮▮▯▯▯▯▯▯▯▯▯▯▯] 56%
 
 
 # Running
