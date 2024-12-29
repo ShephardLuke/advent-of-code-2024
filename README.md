@@ -3,9 +3,9 @@
 ### My [Advent of Code 2024](https://adventofcode.com/2024) solutions.
 Written in python using procedural programming.
 
-## Progress: 29/50 stars (14.5/25 days)
+## Progress: 30/50 stars (15/25 days)
 
-### [▮▮▮▮▮▮▮▮▮▮▮▮▮▮▯▯▯▯▯▯▯▯▯▯▯] 58%
+### [▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▯▯▯▯▯▯▯▯▯▯] 60%
 
 
 # Running
@@ -34,7 +34,7 @@ Instructions for running part 1 and part 2 for each day (if both parts are in th
 |  12 | Run fencePriceCalculator.py with the `BULK_DISCOUNT_ENABLED` flag in the main method set to `False`.                           | Run fencePriceCalculator.py with the `BULK_DISCOUNT_ENABLED` flag in the main method set to `True`.       |
 |  13 | Run fewestTokenCalculator.py with `PRIZE_MODIFIER` in the main method set to `0`.                                              | Run fewestTokenCalculator.py with `PRIZE_MODIFIER` in the main method set to `10000000000000`.            |
 |  14 | Run safetyFactorCalculator.py.                                                                                                 | Run easterEggFinder.py.                                                                                   |
-|  15 | Run robotPredictor.py.                                                                                                         |                                                                                                           |
+|  15 | Run robotPredictor.py with the `WIDER_WAREHOUSE` flag in the main method set to `False`.                                       | Run robotPredictor.py with the `WIDER_WAREHOUSE` flag in the main method set to `True`.                   |
 
 
 # Rules I made for myself
